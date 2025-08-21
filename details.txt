@@ -1,0 +1,8 @@
+---------------------------------
+CLI_fileExp directory structure
+---------------------------------
+Categories
+Years
+Months
+Date
+[files]
