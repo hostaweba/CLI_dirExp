@@ -51,10 +51,12 @@ class DirUtils:
         parent_dir_name = os.path.basename(parent_dir)
         table_title = f"{level_name} in '{parent_dir_name}'"
         
-        table = Table(title=Panel(table_title, style="bold green"),
-                      header_style="bold yellow",
-                      show_header=True,
-                      title_justify="center")
+        table = Table(
+            title=Panel(table_title, style="bold green"),
+            header_style="bold yellow",
+            show_header=True,
+            title_justify="center"
+        )
 
         table.add_column("Index", style="cyan")
         table.add_column("Directory", style="magenta")
@@ -104,7 +106,6 @@ class DirUtils:
             if match in choices_lower:
                 result_matches.append(choices[choices_lower.index(match)])
             else:
-                # If the match is from substring_matches, directly append
                 result_matches.extend([choice for choice in choices if match in choice.lower()])
         
         return list(set(result_matches))
@@ -113,7 +114,6 @@ class DirUtils:
     def prompt_for_choice(prompt, choices):
         """Prompt the user for a choice and return the best match or handle multiple matches."""
         while True:
-            # Style prompt text with rich's Text object
             styled_prompt = Text(prompt, style="bold white on blue")
             choice = Prompt.ask(styled_prompt).strip()
             
@@ -121,6 +121,8 @@ class DirUtils:
                 return None
             elif choice.lower() == 'open':
                 return 'open'
+            elif choice.lower() == 'exit':   # ✅ fixed here
+                return 'exit'
             
             matches = DirUtils.find_matches(choice, choices)
             if not matches:
@@ -140,8 +142,10 @@ class DirUtils:
                 DirUtils.console.print(table)
                 
                 while True:
-                    # Style the prompt for choices with rich's Text object
-                    styled_choice_prompt = Text("Enter the number of your choice, or 'back' to go back", style="bold white on blue")
+                    styled_choice_prompt = Text(
+                        "Enter the number of your choice, or 'back' to go back",
+                        style="bold white on blue"
+                    )
                     match_choice = Prompt.ask(styled_choice_prompt).strip()
                     if match_choice.lower() == 'back':
                         return None
