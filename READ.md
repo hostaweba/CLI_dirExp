@@ -13,12 +13,13 @@ CLI_fileExp/
 │── DirExplorer.py         # Main CLI program
 │── my_modules/
 │   └── dir_utils.py       # Utility functions for directory handling
-│── Categories/            # Example root directory
-│   ├── 2024/
-│   │   ├── 01_January/
-│   │   │   ├── 01/ [files]
-│   │   │   ├── 02/ [files]
-│   │   └── 02_February/ ...
+|── demo-directory         # Example root directory
+    │── Categories/            
+    |   ├── 2024/
+    │   ├   |── 01_January/
+    │   │   |   ├── 01/ [files]
+    |   │   |   └── 02/ [files]
+    |   |   └── 02_February/ ...
 ```
 
 ---
@@ -102,5 +103,6 @@ Enter the name of the category you want to choose, or 'exit' to quit:
   ```python
   os.getcwd()
   ```
+
 
 
